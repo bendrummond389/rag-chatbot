@@ -10,17 +10,16 @@ The RAG example chatbot is designed to answer user queries by retrieving
 relevant information from a collection of documents. The project consists
 of several components:
 
-### Directory Structure
-```text
-main.py: Contains the main logic for running the RAG-based chatbot.
-models.py: Defines functions for loading language models, embeddings, and
-Chroma vector databases.
-utils.py: Provides utility functions for loading and formatting documents,
-and splitting text.
-config.py (not provided): Define necessary constants such as
+### Project Structure
+
+* `main.py`: Contains the main logic for running the RAG-based chatbot.
+* `models.py`: Defines functions for loading language models, embeddings,
+and Chroma vector databases.
+* `utils.py`: Provides utility functions for loading and formatting
+documents, and splitting text.
+* `config.py` (not provided): Define necessary constants such as
 `DIRECTORY_PATH`, `CHAT_MODEL`, `EMBEDDING_MODEL`, and
 `PERSIST_DIRECTORY`.
-```
 
 ### Dependencies
 

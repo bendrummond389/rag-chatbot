@@ -16,7 +16,7 @@ from langchain_core.prompts import (
     SystemMessagePromptTemplate,
 )
 
-
+# Define the chat prompt template using system and human message prompts
 prompt = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
@@ -28,10 +28,14 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 
+# Function to generate a response using retrieval-augmented generation (RAG)
 def generate_rag_response(question):
+    # Initialize the Chroma vector database
     db = get_chroma()
+    # Configure the retriever with similarity search and set the number of results to return (k=5)
     retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 5})
 
+    # Define the RAG chain with context retrieval, formatting, and LLM invocation
     rag_chain = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt
@@ -39,18 +43,23 @@ def generate_rag_response(question):
         | StrOutputParser()
     )
 
+    # Invoke the RAG chain with the input question and get the response
     response = rag_chain.invoke(question)
     return response
 
-
+# Main function to run the chatbot
 def main():
+    # Uncomment the line below to save embeddings to the vector database before querying
     # save_embeddings()
 
-    query = "what does _adapt_  do in sveltekit?"
+    # Define the query question
+    query = "what does _adapt_ do in sveltekit?"
 
+    # Generate the RAG response for the query
     res = generate_rag_response(query)
+    # Print the response
     print(res)
 
-
+# Entry point of the script
 if __name__ == "__main__":
     main()

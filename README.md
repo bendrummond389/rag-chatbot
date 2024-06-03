@@ -26,4 +26,9 @@ pip install -r requirements.txt
 ## Setup
 
 - 1. Create a config.py file with the following constants:
+    - DIRECTORY_PATH = "path/to/your/markdown/files"
+    - CHAT_MODEL = "name_of_your_chat_model"
+    - EMBEDDING_MODEL = "name_of_your_embedding_model"
+    - PERSIST_DIRECTORY = "path/to/persist/directory"
+
 - 2. Place your markdown files in the directory specified by DIRECTORY_PATH.
